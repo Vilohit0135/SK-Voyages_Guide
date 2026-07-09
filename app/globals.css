@@ -1,0 +1,780 @@
+:root {
+  color-scheme: light;
+
+  --brand: #085e87;
+  --brand-strong: #064b6c;
+  --brand-soft: #e3eff5;
+  --gold: #f3b33d;
+
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --subtle: #f2f6fa;
+  --text: #0b2740;
+  --text-strong: #06192b;
+  --muted: #5f7286;
+  --faint: #7890a6;
+  --border: #e2e8f0;
+  --border-strong: #c8d4e0;
+
+  /* The header is dark against the white page, so its ink is fixed. */
+  --hero-bg-top: #0e2a44;
+  --hero-bg-bottom: #071a2c;
+  --hero-glow-a: rgba(243, 179, 61, 0.18);
+  --hero-glow-b: rgba(88, 182, 221, 0.22);
+  --hero-accent: #6fc6e8;
+  --hero-muted: rgba(214, 231, 244, 0.74);
+  --hero-faint: rgba(214, 231, 244, 0.68);
+  --hero-line: rgba(255, 255, 255, 0.14);
+  --hero-dot: #6ec1e4;
+  --dot-opacity: 0.12;
+
+  --radius: 16px;
+
+  /* White cards on a white page lean on the shadow, not a background contrast. */
+  --shadow-sm: 0 1px 2px rgba(6, 25, 43, 0.05), 0 6px 18px -12px rgba(6, 25, 43, 0.22);
+  --shadow: 0 10px 30px -12px rgba(6, 25, 43, 0.18);
+  --shadow-lg: 0 30px 60px -24px rgba(6, 25, 43, 0.32);
+  --ring: 0 0 0 3px rgba(8, 94, 135, 0.32);
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+/* Per-role accents. Each card scopes --accent for its icon, rule, and CTA. */
+[data-role="driver"] {
+  --accent: #9a6708;
+  --accent-tint: rgba(243, 179, 61, 0.18);
+}
+[data-role="supervisor"] {
+  --accent: #0d6f52;
+  --accent-tint: rgba(16, 150, 110, 0.15);
+}
+[data-role="vendor"] {
+  --accent: #5733d6;
+  --accent-tint: rgba(109, 74, 255, 0.13);
+}
+[data-role="superadmin"] {
+  --accent: #0a6b96;
+  --accent-tint: rgba(8, 94, 135, 0.14);
+}
+[data-role="default"] {
+  --accent: #4c6178;
+  --accent-tint: rgba(76, 97, 120, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  /* Without an explicit column, the implicit `auto` track sizes to its items'
+     min-content and lets the card grid push the page wider than the viewport. */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(16px, 2vw, 24px) clamp(20px, 5vw, 64px) clamp(16px, 2vw, 26px);
+  background:
+    radial-gradient(680px 260px at 0% 145%, var(--hero-glow-a), transparent 66%),
+    radial-gradient(900px 380px at 86% -34%, var(--hero-glow-b), transparent 62%),
+    linear-gradient(180deg, var(--hero-bg-top) 0%, var(--hero-bg-bottom) 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: var(--hero-dot);
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: var(--dot-opacity);
+  -webkit-mask-image: linear-gradient(155deg, #000, transparent 60%);
+  mask-image: linear-gradient(155deg, #000, transparent 60%);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 16%, var(--hero-accent) 58%, transparent 100%);
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* The lockup's ink is navy, so on the dark header it needs a light plate. */
+.hero-logo {
+  display: inline-block;
+  margin: 0;
+  padding: 8px 11px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 28px -16px rgba(0, 0, 0, 0.7);
+  line-height: 0;
+}
+
+.hero-logo img {
+  width: clamp(168px, 17vw, 208px);
+  height: auto;
+}
+
+.hero-copy {
+  max-width: 460px;
+  margin: 11px 0 0;
+  color: var(--hero-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.hero-panel {
+  position: relative;
+  flex: none;
+  min-width: 152px;
+  padding: 11px 15px;
+  border: 1px solid var(--hero-line);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 16px 36px -22px rgba(0, 0, 0, 0.7);
+  text-align: right;
+  overflow: hidden;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--hero-accent));
+}
+
+.stat {
+  margin: 0;
+}
+
+.stat strong,
+.stat span {
+  display: block;
+}
+
+.stat strong {
+  color: var(--hero-accent);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat span {
+  margin-top: 4px;
+  color: var(--hero-muted);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.panel-note {
+  margin: 9px 0 0;
+  padding-top: 8px;
+  border-top: 1px dashed var(--hero-line);
+  color: var(--hero-faint);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+
+/* ---------- Main ---------- */
+
+.main {
+  padding: clamp(28px, 5vw, 56px) clamp(20px, 5vw, 64px) 64px;
+}
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 1180px;
+  margin: 0 auto 22px;
+}
+
+.section-head h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.section-head p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- Search ---------- */
+
+.search {
+  position: relative;
+  flex: none;
+  width: min(300px, 100%);
+}
+
+.search > svg {
+  position: absolute;
+  top: 50%;
+  left: 13px;
+  color: var(--faint);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search input {
+  width: 100%;
+  height: 42px;
+  padding: 0 44px 0 38px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 160ms var(--ease);
+}
+
+.search input::placeholder {
+  color: var(--faint);
+}
+
+.search input:hover {
+  border-color: var(--border-strong);
+}
+
+.search input:focus-visible {
+  border-color: var(--brand);
+  box-shadow: var(--ring);
+}
+
+.search input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.search kbd {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--subtle);
+  color: var(--faint);
+  font-family: var(--mono);
+  font-size: 11px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 160ms var(--ease), color 160ms var(--ease);
+}
+
+.search-clear:hover {
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+}
+
+/* ---------- Card grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 285px), 1fr));
+  gap: 18px;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+@keyframes card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.grid > li {
+  animation: card-rise 460ms var(--ease) backwards;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 18px;
+  height: 100%;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    transform 220ms var(--ease),
+    border-color 220ms var(--ease),
+    box-shadow 220ms var(--ease);
+}
+
+/* Accent rule that wipes in along the top edge on hover. */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 280ms var(--ease);
+}
+
+/* Soft accent bloom behind the icon. */
+.card::after {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  z-index: -1;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  opacity: 0;
+  transition: opacity 280ms var(--ease);
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.card:focus-visible {
+  box-shadow: var(--shadow-lg), var(--ring);
+}
+
+.card:hover::before,
+.card:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.card:hover::after,
+.card:focus-visible::after {
+  opacity: 1;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-tint);
+  color: var(--accent);
+  transition: transform 260ms var(--ease);
+}
+
+.card:hover .card-icon,
+.card:focus-visible .card-icon {
+  transform: scale(1.06) rotate(-3deg);
+}
+
+.card-surface {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.card-body {
+  display: block;
+  /* grid items default to min-width:auto, which stops .card-path from ellipsising */
+  min-width: 0;
+}
+
+.card-title {
+  display: block;
+  color: var(--text-strong);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+
+.card-blurb {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+  overflow: hidden;
+}
+
+.card-path {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border);
+}
+
+.card-facts {
+  color: var(--faint);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 8px;
+  color: var(--accent);
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+.card-cta svg {
+  transition: transform 220ms var(--ease);
+}
+
+.card:hover .card-cta svg,
+.card:focus-visible .card-cta svg {
+  transform: translateX(4px);
+}
+
+/* ---------- Empty states ---------- */
+
+.empty {
+  max-width: 640px;
+  margin: 8px auto 0;
+  padding: 32px 28px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--panel);
+  text-align: center;
+}
+
+.empty h2,
+.empty h3 {
+  margin: 0 0 8px;
+  color: var(--text-strong);
+  font-size: 19px;
+}
+
+.empty p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.empty code {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--brand);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px clamp(20px, 5vw, 64px) 32px;
+  border-top: 1px solid var(--border);
+  color: var(--faint);
+  font-size: 13px;
+}
+
+.footer p {
+  margin: 0;
+}
+
+/* ---------- Viewer chrome ---------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--panel);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  min-width: 0;
+}
+
+.brand h1 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 18px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.brand p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.nav a,
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color 160ms var(--ease),
+    color 160ms var(--ease),
+    background 160ms var(--ease);
+}
+
+.nav a:hover,
+.button:hover {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+}
+
+.viewer {
+  width: 100%;
+  height: calc(100vh - 66px);
+  border: 0;
+  background: #fff;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .section-head {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .search {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  /* Stacked, the panel would own most of the compact header, so lay it out
+     as one row: count on the left, last-updated beside it. */
+  .hero-panel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 9px 14px;
+    text-align: left;
+  }
+
+  .stat {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+  }
+
+  .stat strong,
+  .stat span {
+    display: inline;
+  }
+
+  .stat strong {
+    font-size: 22px;
+  }
+
+  .panel-note {
+    margin: 0;
+    padding: 2px 0 2px 14px;
+    border-top: 0;
+    border-left: 1px dashed var(--hero-line);
+    white-space: normal;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .main {
+    padding: 24px 16px 48px;
+  }
+
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 16px 28px;
+  }
+
+  .viewer {
+    height: calc(100vh - 132px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    transform: none;
+  }
+
+  .card:hover .card-icon,
+  .card:focus-visible .card-icon {
+    transform: none;
+  }
+}
