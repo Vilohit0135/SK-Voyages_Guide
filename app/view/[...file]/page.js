@@ -1,19 +1,19 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import path from "node:path";
-import { encodePath, getHtmlPages, resolveStaticPath } from "../../../lib/html-pages";
+import { getHtmlPage, getHtmlPages } from "../../../lib/html-pages";
 import { getManualMeta } from "../../../lib/manual-meta";
 
-export default function HtmlViewPage({ params }) {
-  // Same display titles as the home page, so the nav matches the card you clicked.
-  const pages = getHtmlPages().map((page) => ({ ...page, title: getManualMeta(page).title }));
-  const absolutePath = resolveStaticPath(params.file);
+// Pre-render one page per manual at build time. Without this the route would be
+// rendered per-request, and on serverless hosting the manual files are not on
+// disk then -- which is what made every /view/... URL 404 after deploying.
+export function generateStaticParams() {
+  return getHtmlPages().map((page) => ({ file: [page.path] }));
+}
 
-  if (!absolutePath) {
-    notFound();
-  }
+export const dynamicParams = false;
 
-  const requestedPath = params.file
+function decodeSegments(segments) {
+  return segments
     .map((segment) => {
       try {
         return decodeURIComponent(segment);
@@ -22,22 +22,25 @@ export default function HtmlViewPage({ params }) {
       }
     })
     .join("/");
-  const listedPage = pages.find((item) => item.path === requestedPath);
-  const page = listedPage || {
-    title: path
-      .basename(requestedPath, path.extname(requestedPath))
-      .replace(/\s*\(\d+\)\s*$/g, "")
-      .replace(/[_-]+/g, " ")
-      .replace(/\b\w/g, (letter) => letter.toUpperCase()),
-    path: requestedPath,
-    slug: encodePath(requestedPath)
-  };
+}
+
+export default function HtmlViewPage({ params }) {
+  const requestedPath = decodeSegments(params.file);
+  const page = getHtmlPage(requestedPath);
+
+  if (!page) {
+    notFound();
+  }
+
+  // Same display titles as the home page, so the nav matches the card you clicked.
+  const pages = getHtmlPages().map((item) => ({ ...item, title: getManualMeta(item).title }));
+  const title = getManualMeta(page).title;
 
   return (
     <div className="shell">
       <header className="topbar">
         <div className="brand">
-          <h1>{page.title}</h1>
+          <h1>{title}</h1>
           <p>{page.path}</p>
         </div>
         <nav className="nav" aria-label="HTML pages">
@@ -50,7 +53,7 @@ export default function HtmlViewPage({ params }) {
         </nav>
       </header>
 
-      <iframe className="viewer" src={`/files/${page.slug}`} title={page.title} />
+      <iframe className="viewer" src={page.href} title={title} />
     </div>
   );
 }

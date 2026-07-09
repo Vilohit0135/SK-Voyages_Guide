@@ -1099,70 +1099,9 @@
   })();
 </script>
 
-<button class="download-pdf" id="downloadPdf" type="button" aria-label="Download this manual as a PDF">
+<a class="download-pdf" href="/pdf/driver-app-user-manual.pdf" download aria-label="Download this manual as a PDF">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
     <path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 21h16"/>
   </svg>
-  <span data-label>Download PDF</span>
-</button>
-<script>
-  (function () {
-    var button = document.getElementById('downloadPdf');
-    if (!button) return;
-
-    var label = button.querySelector('[data-label]');
-    var idle = label.textContent;
-
-    function reset(delay) {
-      setTimeout(function () {
-        label.textContent = idle;
-        button.classList.remove('is-error');
-        button.disabled = false;
-      }, delay);
-    }
-
-    button.addEventListener('click', function () {
-      if (button.disabled) return;
-
-      // Works whether the manual is served at /files/<name> or at /<name>.
-      var file = location.pathname.replace(/^\/files\//, '').replace(/^\//, '');
-      if (!file) return;
-
-      button.disabled = true;
-      button.classList.remove('is-error');
-      label.textContent = 'Preparing\u2026';
-
-      fetch('/api/pdf/' + file)
-        .then(function (response) {
-          if (!response.ok) {
-            return response.text().then(function (text) {
-              throw new Error(text || 'Export failed (' + response.status + ')');
-            });
-          }
-          return response.blob();
-        })
-        .then(function (blob) {
-          var url = URL.createObjectURL(blob);
-          var link = document.createElement('a');
-          link.href = url;
-          link.download = (document.title || 'manual')
-            .replace(/[^a-z0-9]+/gi, '-')
-            .replace(/^-+|-+$/g, '')
-            .toLowerCase() + '.pdf';
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
-
-          label.textContent = 'Downloaded';
-          reset(1800);
-        })
-        .catch(function (error) {
-          console.error(error);
-          button.classList.add('is-error');
-          label.textContent = 'Failed \u2014 retry';
-          reset(3200);
-        });
-    });
-  })();
-</script>
+  <span>Download PDF</span>
+</a>

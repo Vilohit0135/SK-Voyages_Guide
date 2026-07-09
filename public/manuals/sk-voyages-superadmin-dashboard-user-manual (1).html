@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SK Voyages Vendor Dashboard User Manual</title>
+  <title>SK Voyages Super Admin Dashboard User Manual</title>
   <link rel="stylesheet" href="/assets/manual.css">
 </head>
 <body>
@@ -33,15 +33,19 @@
         <div class="nav-group">
           <div class="nav-label">Core areas</div>
           <a href="#dashboard">Dashboard</a>
-          <a href="#supervisors">Supervisors</a>
-          <a href="#trips">Trips</a>
-          <a href="#scheduled-trips">Scheduled Trips</a>
+          <a href="#finance-dashboard">Finance Dashboard</a>
+          <a href="#vendors">Vendors</a>
+          <a href="#live-map">Live Map</a>
+          <a href="#drivers">Drivers</a>
+          <a href="#onboarding">Driver Onboarding</a>
+          <a href="#website-enquiry">Website Enquiry</a>
+          <a href="#invoices">Invoices</a>
           <a href="#reports">Reports</a>
-          <a href="#cancellations">Cancellations</a>
           <a href="#tickets">Tickets</a>
-          <a href="#account">Account</a>
+          <a href="#cancellations">Cancellations</a>
+          <a href="#sos">SOS</a>
           <a href="#team">User Management</a>
-          <a href="#profile">Settings and Profile</a>
+          <a href="#settings">Settings</a>
         </div>
         <div class="nav-group">
           <div class="nav-label">Reference</div>
@@ -58,20 +62,20 @@
       <header class="hero">
         <div class="hero-inner">
           <div class="eyebrow">User manual &middot; Version 1.0</div>
-          <h1>SK Voyages Vendor Dashboard</h1>
-          <div class="subtitle">A friendly guide for vendor admins and team members who monitor trips, supervisors, wallet balance, reports, tickets, and account activity.</div>
-          <p class="tagline">Use this manual when you want to know what a screen is for, what to tap, and what each status means.</p>
+          <h1>SK Voyages Super Admin Dashboard</h1>
+          <div class="subtitle">A friendly guide for operations and admin teams who monitor vendors, drivers, trips, enquiries, invoices, support issues, and platform settings.</div>
+          <p class="tagline">Use this manual when you need to know where to look, what to tap, and what each screen is for.</p>
           <div class="journey" aria-label="Product journey map">
-            <div class="stage"><span class="dot"></span><strong>Sign in</strong></div>
-            <div class="stage"><span class="dot"></span><strong>Check wallet</strong></div>
-            <div class="stage dashed"><span class="dot"></span><strong>Track trips</strong></div>
-            <div class="stage"><span class="dot"></span><strong>Review reports</strong></div>
-            <div class="stage dashed"><span class="dot"></span><strong>Resolve issues</strong></div>
+            <div class="stage"><span class="dot"></span><strong>Review KPIs</strong></div>
+            <div class="stage"><span class="dot"></span><strong>Manage vendors</strong></div>
+            <div class="stage dashed"><span class="dot"></span><strong>Assign trips</strong></div>
+            <div class="stage"><span class="dot"></span><strong>Track finance</strong></div>
+            <div class="stage dashed"><span class="dot"></span><strong>Close issues</strong></div>
           </div>
           <div class="chips">
-            <span class="chip">Audience: Vendor teams</span>
+            <span class="chip">Audience: Super admins</span>
             <span class="chip">Platform: Web dashboard</span>
-            <span class="chip">Reading time: 25 minutes</span>
+            <span class="chip">Reading time: 30 minutes</span>
           </div>
         </div>
       </header>
@@ -79,16 +83,16 @@
       <div class="content">
         <section class="section" id="welcome">
           <div class="section-head"><div class="num">01</div><div><div class="eyebrow">Start here</div><h2>Welcome</h2><div class="rule"></div></div></div>
-          <p class="lead">The Vendor Dashboard is your daily control room for SK Voyages trips. It helps you see today&apos;s spending, active and completed trips, supervisors, tickets, cancellation requests, wallet activity, invoices, and profile settings.</p>
-          <div class="callout info"><div class="symbol">i</div><div><strong>Good to know</strong> Your exact menu may look shorter if your account has limited permissions. That is normal. You only see the areas your vendor admin has allowed.</div></div>
+          <p class="lead">The Super Admin Dashboard is the central place for the SK Voyages operations team. It shows platform money flow, vendor and driver activity, live trips, onboarding, website enquiries, invoices, reports, tickets, cancellations, SOS alerts, and settings.</p>
+          <div class="callout info"><div class="symbol">i</div><div><strong>Good to know</strong> Superadmin team members may see fewer menu items depending on their permissions. Full super admins can see all platform areas.</div></div>
         </section>
 
         <section class="section" id="what-it-does">
           <div class="section-head"><div class="num">02</div><div><div class="eyebrow">Start here</div><h2>What the dashboard does</h2><div class="rule"></div></div></div>
           <div class="grid-3">
-            <div class="card"><h3>Shows live trip activity</h3><p>See trips that are active now, completed trips, scheduled trips, and recent trip details.</p></div>
-            <div class="card"><h3>Tracks money movement</h3><p>Check today&apos;s spend, live hold amount, remaining wallet balance, credit usage, invoices, and ledger entries.</p></div>
-            <div class="card"><h3>Helps your team respond</h3><p>Open tickets, view cancellation requests, manage supervisors, and give team members the right permissions.</p></div>
+            <div class="card"><h3>Monitors the whole platform</h3><p>View vendor spend, driver earnings, hold amount, trips, wallet balances, and low-balance vendors.</p></div>
+            <div class="card"><h3>Controls supply and demand</h3><p>Review vendors, drivers, onboarding records, website enquiries, special enquiries, and custom trips.</p></div>
+            <div class="card"><h3>Supports quick response</h3><p>Use Live Map, Tickets, Cancellations, and SOS to handle urgent operating issues.</p></div>
           </div>
         </section>
 
@@ -97,9 +101,9 @@
           <table>
             <thead><tr><th>Role</th><th>Typical access</th><th>Use it for</th></tr></thead>
             <tbody>
-              <tr><td>Vendor Admin</td><td>All vendor areas, including account, team, and settings.</td><td>Manage the vendor account, add team members, monitor trips, recharge wallet, and review reports.</td></tr>
-              <tr><td>Vendor Team Member</td><td>Only the modules assigned by the vendor admin.</td><td>Handle day-to-day trip monitoring, tickets, reports, supervisors, or cancellations.</td></tr>
-              <tr><td>Read-only helper</td><td>View access where allowed.</td><td>Check trip status, reports, or account information without making changes.</td></tr>
+              <tr><td>Super Admin</td><td>All admin areas, user management, and platform settings.</td><td>Operate the platform, manage team access, configure rules, and oversee finance.</td></tr>
+              <tr><td>Superadmin Team Member</td><td>Only assigned modules such as vendors, drivers, reports, or trip monitoring.</td><td>Handle a focused area of work without seeing unrelated settings.</td></tr>
+              <tr><td>Operations Reviewer</td><td>Monitoring screens and review queues.</td><td>Check enquiries, onboarding, cancellations, tickets, and SOS items.</td></tr>
             </tbody>
           </table>
         </section>
@@ -107,310 +111,393 @@
         <section class="section" id="signing-in">
           <div class="section-head"><div class="num">04</div><div><div class="eyebrow">Basics</div><h2>Signing in</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Use your registered email or phone</h3>
-              <p>The sign-in screen is for opening your secure vendor workspace. Enter the login details given to you by SK Voyages or your vendor admin.</p>
+              <h3>Open your admin workspace</h3>
+              <p>The sign-in screen is for secure access to the superadmin area. Use the credentials assigned to your admin account.</p>
               <ol class="steps">
-                <li>Open the SK Voyages dashboard link.</li>
+                <li>Open the SK Voyages admin dashboard link.</li>
                 <li>Enter your email or mobile number and password.</li>
                 <li>Tap <strong>Sign in</strong>.</li>
-                <li>If you cannot enter, ask your vendor admin to check your status and permissions.</li>
+                <li>If you cannot enter, ask a full super admin to check your account status.</li>
               </ol>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/signin.jpg" width="1898" height="910" loading="lazy"
-                   alt="Vendor dashboard sign-in page with email and password fields and a Sign In button.">
-              <figcaption>The vendor sign-in page.</figcaption>
+              <img src="/images/superadmin/login.jpg" width="1913" height="909" loading="lazy"
+                   alt="SK Voyages admin sign-in page with email and password fields and a Sign In button.">
+              <figcaption>The admin sign-in page.</figcaption>
             </figure>
-          <div class="callout warning"><div class="symbol">!</div><div><strong>If your vendor is inactive</strong> Some actions may be blocked until the account is active again. Contact SK Voyages support if this happens.</div></div>
         </section>
 
         <section class="section" id="getting-around">
           <div class="section-head"><div class="num">05</div><div><div class="eyebrow">Basics</div><h2>Getting around</h2><div class="rule"></div></div></div>
           <div class="feature flip">
             <div class="feature-text">
-              <h3>Use the left menu first</h3>
-              <p>The left sidebar is the fastest way to move between Dashboard, Supervisors, Trips, Reports, Cancellations, Tickets, Account, and Settings.</p>
+              <h3>Use the sidebar as your map</h3>
+              <p>The sidebar groups platform areas. Some menu items expand, such as Super Dashboard, Website Enquiry, and Reports.</p>
               <ul class="tap-list">
-                <li>Tap <strong>Trips</strong> to open Active, Completed, or Scheduled Trips.</li>
-                <li>Tap <strong>Reports</strong> to switch between Supervisor Report and Company Report.</li>
-                <li>Tap your profile area or <strong>Sign out</strong> at the bottom when needed.</li>
+                <li>Tap <strong>Super Dashboard</strong> for Dashboard or Finance Dashboard.</li>
+                <li>Tap <strong>Website Enquiry</strong> for Booking Enquiry, Special Enquiry, or Custom Trip.</li>
+                <li>Tap <strong>Reports</strong> for Vendor Report or Driver Report.</li>
               </ul>
             </div>
             <figure class="shot-image">
-                <img src="/images/vendor/sidebar.jpg" width="222" height="908" loading="lazy"
-                     alt="The vendor sidebar listing Dashboard, Supervisors, Trips, Reports, Cancellations, Tickets, User Management, Account and Settings.">
+                <img src="/images/superadmin/sidebar.jpg" width="225" height="907" loading="lazy"
+                     alt="The admin sidebar listing Super Dashboard, Vendors, Live Map, Drivers, Driver Onboarding, Website Enquiry, Invoices, Reports, User Management, Tickets, Cancellations, SOS, Accounts and Settings.">
               </figure>
           </div>
         </section>
 
         <section class="section" id="reading-screens">
           <div class="section-head"><div class="num">06</div><div><div class="eyebrow">Basics</div><h2>Reading the screens</h2><div class="rule"></div></div></div>
-          <p class="lead">Most screens use cards for important numbers, tabs for switching lists, filters for narrowing results, and colored badges for status.</p>
+          <p class="lead">Admin screens use KPI cards for totals, charts for comparison, tables for details, filters for finding records, and status badges for quick scanning.</p>
           <div class="card">
-            <p><span class="pill green">Completed</span> finished or approved.</p>
-            <p><span class="pill navy">Ongoing</span> currently moving or in progress.</p>
-            <p><span class="pill amber">Pending</span> waiting for action or review.</p>
-            <p><span class="pill red">Cancelled</span> stopped, rejected, or failed.</p>
-            <p><span class="pill grey">Offline</span> inactive, not available, or not submitted.</p>
+            <p><span class="pill green">Verified</span> approved, active, completed, or available.</p>
+            <p><span class="pill navy">On Trip</span> active, assigned, or in progress.</p>
+            <p><span class="pill amber">Pending</span> waiting for review, payment, or action.</p>
+            <p><span class="pill red">Rejected</span> cancelled, failed, or not approved.</p>
+            <p><span class="pill grey">Offline</span> inactive, unavailable, or not submitted.</p>
           </div>
         </section>
 
         <section class="section" id="dashboard">
           <div class="section-head"><div class="num">07</div><div><div class="eyebrow">Core areas</div><h2>Dashboard</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Your daily snapshot</h3>
-              <p>The Dashboard is for a quick health check. It shows Today Spend, Live Hold Amount, Created Trips Today, Remaining Balance or Credit Usage, top supervisors, and recent completed trips.</p>
+              <h3>Start with money flow and activity</h3>
+              <p>The main Dashboard shows vendor spend, driver earned amount, hold amount, trips, vendor recharge, driver withdrawals, platform wallet, profit, low-balance vendors, charts, and leaderboards.</p>
               <ul class="tap-list">
-                <li>Tap <strong>+ Add Money</strong> if you are prepaid and need more wallet balance.</li>
-                <li>Tap <strong>Spend</strong> or <strong>Trips</strong> in the supervisor chart to change the view.</li>
-                <li>Tap a recent trip to open its details.</li>
+                <li>Tap quick ranges such as <strong>Today</strong>, <strong>Yesterday</strong>, <strong>Last 7 Days</strong>, or <strong>Last 30 Days</strong>.</li>
+                <li>Tap <strong>Refresh</strong> to load the latest numbers.</li>
+                <li>Tap <strong>Low Balance Vendors</strong> to open the low-balance list.</li>
               </ul>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/dashboard.jpg" width="1915" height="905" loading="lazy"
-                   alt="Vendor Dashboard with today's spend, live hold amount, trips created today and remaining balance, above a supervisors chart and recent trips.">
-              <figcaption>The Dashboard: spend, live hold, trips today, wallet balance, and recent trips.</figcaption>
+              <img src="/images/superadmin/dashboard.jpg" width="1915" height="909" loading="lazy"
+                   alt="Super admin Dashboard with KPI cards for vendor spend, driver earnings, hold amount and trips, above vendor and driver charts.">
+              <figcaption>The Dashboard: money-flow KPIs across all vendors and drivers, with per-vendor and per-driver charts.</figcaption>
             </figure>
-          <div class="callout tip"><div class="symbol">OK</div><div><strong>Daily habit</strong> Start here every morning. Low wallet balance or high live hold amount can affect trip handling.</div></div>
         </section>
 
-        <section class="section" id="supervisors">
-          <div class="section-head"><div class="num">08</div><div><div class="eyebrow">Core areas</div><h2>Supervisors</h2><div class="rule"></div></div></div>
+        <section class="section" id="finance-dashboard">
+          <div class="section-head"><div class="num">08</div><div><div class="eyebrow">Core areas</div><h2>Finance Dashboard</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Manage supervisor access and activity</h3>
-              <p>The Supervisors screen lists the supervisors under your vendor. Use it to search, filter by status, open a supervisor profile, and review trip and spend activity.</p>
+              <h3>Review platform finance in detail</h3>
+              <p>The Finance Dashboard is for deeper money review across bookings, fare, passengers, scheduled date, created date, and finance categories.</p>
               <ul class="tap-list">
-                <li>Tap a supervisor row to view details.</li>
-                <li>Use filters to find active or inactive supervisors.</li>
-                <li>Check the detail page for today&apos;s completed trips and recent bookings.</li>
+                <li>Use date filters before reading totals.</li>
+                <li>Check booking rows for customer, route, vehicle type, passengers, fare, created date, and scheduled date.</li>
+                <li>Use charts to compare categories and spot unusual movement.</li>
               </ul>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/supervisor.jpg" width="1916" height="909" loading="lazy"
-                   alt="Supervisors page listing each supervisor with email, phone, zone, status and join date, plus Add Supervisor and Export actions.">
-              <figcaption>The Supervisors list, with Add Supervisor and XLSX export.</figcaption>
+              <img src="/images/superadmin/finance-dashboard.jpg" width="1909" height="907" loading="lazy"
+                   alt="Finance dashboard for website bookings showing completed bookings, total revenue, average booking rate, per-day analysis and a bookings table.">
+              <figcaption>Finance &mdash; Website Bookings: revenue, per-day analysis, and completed website bookings.</figcaption>
             </figure>
         </section>
 
-        <section class="section" id="trips">
-          <div class="section-head"><div class="num">09</div><div><div class="eyebrow">Core areas</div><h2>Trips</h2><div class="rule"></div></div></div>
+        <section class="section" id="vendors">
+          <div class="section-head"><div class="num">09</div><div><div class="eyebrow">Core areas</div><h2>Vendors</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Follow active and completed work</h3>
-              <p>The Trips area is split into Active Trips, Completed Trips, and Scheduled Trips. Active Trips show what is happening now. Completed Trips show finished journeys and fare details.</p>
+              <h3>Review and manage vendor accounts</h3>
+              <p>The Vendors area lists verified and unverified vendors. It includes company info, documents, credentials, status, wallet details, and vendor profile pages.</p>
               <ol class="steps">
-                <li>Tap <strong>Trips</strong> in the sidebar.</li>
-                <li>Choose <strong>Active Trips</strong> for live work or <strong>Completed Trips</strong> for past journeys.</li>
-                <li>Use search or filters to find a trip by route, supervisor, driver, date, or status.</li>
-                <li>Tap a row to open the trip detail modal.</li>
+                <li>Open <strong>Vendors</strong>.</li>
+                <li>Switch between <strong>Verified</strong> and <strong>Unverified</strong>.</li>
+                <li>Use search and status filters to narrow the list.</li>
+                <li>Tap a vendor row to open details or review documents.</li>
               </ol>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/trips.jpg" width="1911" height="905" loading="lazy"
-                   alt="Active Trips table with search, date range and column controls, showing trip ID, route, supervisor, vehicle, driver and status columns.">
-              <figcaption>Active Trips. Completed and Scheduled sit under the same Trips menu.</figcaption>
+              <img src="/images/superadmin/vendors.jpg" width="1905" height="868" loading="lazy"
+                   alt="Vendors table with verified and unverified tabs, search, filters, and columns for status, city, wallet balance, billing type and credit limit.">
+              <figcaption>The Vendors table, with verified/unverified tabs and an Onboard Vendor action.</figcaption>
             </figure>
+          <div class="callout warning"><div class="symbol">!</div><div><strong>Before approving</strong> Check company information and submitted documents carefully. Vendor approval affects access and billing.</div></div>
         </section>
 
-        <section class="section" id="scheduled-trips">
-          <div class="section-head"><div class="num">10</div><div><div class="eyebrow">Core areas</div><h2>Scheduled Trips</h2><div class="rule"></div></div></div>
+        <section class="section" id="live-map">
+          <div class="section-head"><div class="num">10</div><div><div class="eyebrow">Core areas</div><h2>Live Map</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Watch upcoming bookings move forward</h3>
-              <p>Scheduled Trips are grouped by Pending, Published, and Driver Assigned. This helps you see which future trips still need attention.</p>
+              <h3>See drivers and trips in real time</h3>
+              <p>Live Map is for operations monitoring. It helps you see driver location and status such as Available, On Trip, or Offline.</p>
               <ul class="tap-list">
-                <li>Tap <strong>Pending</strong> to see trips not yet ready for a driver.</li>
-                <li>Tap <strong>Published</strong> to see trips visible for driver assignment.</li>
-                <li>Tap <strong>Driver Assigned</strong> to confirm the driver is already linked.</li>
+                <li>Open <strong>Live Map</strong> during active operations.</li>
+                <li>Look for drivers marked <strong>Available</strong> or <strong>On Trip</strong>.</li>
+                <li>Use driver details to understand who is nearby or currently serving a trip.</li>
               </ul>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/scheduledtrips.jpg" width="1911" height="905" loading="lazy"
-                   alt="Scheduled Trips with Pending, Published and Driver Assigned tabs above the scheduled trips table.">
-              <figcaption>Scheduled Trips, split by Pending, Published and Driver Assigned.</figcaption>
+              <img src="/images/superadmin/livemaps.jpg" width="1917" height="908" loading="lazy"
+                   alt="Live Map showing vehicle markers across Bengaluru with an online/offline legend and a driver list panel on the right.">
+              <figcaption>Live Map: real-time vehicle tracking across all vendors, with a driver panel.</figcaption>
+            </figure>
+        </section>
+
+        <section class="section" id="drivers">
+          <div class="section-head"><div class="num">11</div><div><div class="eyebrow">Core areas</div><h2>Drivers</h2><div class="rule"></div></div></div>
+          <div class="feature-text">
+              <h3>Manage driver profiles and history</h3>
+              <p>The Drivers screen is for searching, filtering, opening driver details, checking status, and reviewing profile, trips, documents, and wallet-related activity.</p>
+              <ul class="tap-list">
+                <li>Use status filters such as Available, On Trip, or Offline.</li>
+                <li>Tap a driver to open the detail page.</li>
+                <li>Review completed, cancelled, ongoing, or pending trip history where shown.</li>
+              </ul>
+            </div>
+            <figure class="shot-image full">
+              <img src="/images/superadmin/drivers.jpg" width="1915" height="911" loading="lazy"
+                   alt="Drivers page with total, on-trip, online and offline KPI cards above a table of drivers, phones, vehicles and last-active times.">
+              <figcaption>The Drivers list with availability KPIs.</figcaption>
+            </figure>
+        </section>
+
+        <section class="section" id="onboarding">
+          <div class="section-head"><div class="num">12</div><div><div class="eyebrow">Core areas</div><h2>Driver Onboarding</h2><div class="rule"></div></div></div>
+          <div class="feature-text">
+              <h3>Review driver applications</h3>
+              <p>Driver Onboarding is for checking new driver submissions, documents, personal details, address details, and vehicle information before approval.</p>
+              <ol class="steps">
+                <li>Open <strong>Driver Onboarding</strong>.</li>
+                <li>Tap a driver application.</li>
+                <li>Review personal details, address, vehicle, and uploaded documents.</li>
+                <li>Choose approve, reject, or keep pending based on the review.</li>
+              </ol>
+            </div>
+            <figure class="shot-image full">
+              <img src="/images/superadmin/driver-onboarding.jpg" width="1913" height="910" loading="lazy"
+                   alt="Driver Onboarding with pending verification, in review and rejection counts, above a table of registrations each with a Review action.">
+              <figcaption>Driver Onboarding: pending, in-review and rejected registrations awaiting review.</figcaption>
+            </figure>
+        </section>
+
+        <section class="section" id="website-enquiry">
+          <div class="section-head"><div class="num">13</div><div><div class="eyebrow">Core areas</div><h2>Website Enquiry</h2><div class="rule"></div></div></div>
+          <div class="feature-text">
+              <h3>Turn incoming requests into trips</h3>
+              <p>Website Enquiry includes Booking Enquiry, Special Enquiry, and Custom Trip. Booking records can move through Pending, Published, Driver Assigned, Active, and Completed.</p>
+              <ul class="tap-list">
+                <li>Tap <strong>Booking Enquiry</strong> for normal website booking requests.</li>
+                <li>Tap <strong>Special Enquiry</strong> for custom customer requests.</li>
+                <li>Tap <strong>Custom Trip</strong> to create or manage trips that need manual handling.</li>
+                <li>Open a booking to publish, assign a driver, cancel assignment, or review details.</li>
+              </ul>
+            </div>
+            <figure class="shot-image full">
+              <img src="/images/superadmin/booking-enquiry.jpg" width="1913" height="904" loading="lazy"
+                   alt="Booking Enquiry with status tabs, a total bookings card, and a table of enquiries showing customer, route, category and schedule.">
+              <figcaption>Booking Enquiry, filtered by status across the enquiry lifecycle.</figcaption>
+            </figure>
+          <div class="callout tip"><div class="symbol">OK</div><div><strong>Use the tabs</strong> The enquiry tabs show where each booking is in the journey. Start with Pending when looking for work that needs action.</div></div>
+        </section>
+
+        <section class="section" id="invoices">
+          <div class="section-head"><div class="num">14</div><div><div class="eyebrow">Core areas</div><h2>Invoices</h2><div class="rule"></div></div></div>
+          <div class="feature-text">
+              <h3>Track vendor billing</h3>
+              <p>Invoices show total billed, collected amount, outstanding amount, and invoice rows. Statuses include Pending, Overdue, Paid, and Voided.</p>
+              <ul class="tap-list">
+                <li>Use filters to find invoices by vendor, status, or date.</li>
+                <li>Tap an invoice row to view invoice details.</li>
+                <li>Update pending or overdue invoices only when the payment state is confirmed.</li>
+              </ul>
+            </div>
+            <figure class="shot-image full">
+              <img src="/images/superadmin/invoices.jpg" width="1909" height="907" loading="lazy"
+                   alt="Vendor Invoicing with total billed, collected and outstanding cards, above a table of vendor invoices with status and export actions.">
+              <figcaption>Vendor Invoicing: billed, collected and outstanding totals.</figcaption>
             </figure>
         </section>
 
         <section class="section" id="reports">
-          <div class="section-head"><div class="num">11</div><div><div class="eyebrow">Core areas</div><h2>Reports</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">15</div><div><div class="eyebrow">Core areas</div><h2>Reports</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Review performance and spending</h3>
-              <p>Reports help you compare completed trips, spend, and supervisor or company activity for a selected period.</p>
+              <h3>Compare vendor and driver performance</h3>
+              <p>Reports are split into Vendor Report and Driver Report. Use them to review completed trips, spend, earnings, and period-based activity.</p>
               <ul class="tap-list">
-                <li>Tap <strong>Supervisor Report</strong> to review one or more supervisors.</li>
-                <li>Tap <strong>Company Report</strong> to review company-level activity.</li>
-                <li>Use date filters before exporting or reading totals.</li>
+                <li>Tap <strong>Vendor Report</strong> to compare vendors.</li>
+                <li>Tap <strong>Driver Report</strong> to compare drivers.</li>
+                <li>Set the date range before reading totals or exporting data.</li>
               </ul>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/supervisor-report.jpg" width="1904" height="907" loading="lazy"
-                   alt="Supervisor Report showing total trips, wallet consumed and average fare, with trips over time and an instant-vs-scheduled split.">
-              <figcaption>Supervisor Report: trips and wallet spend per supervisor.</figcaption>
+              <img src="/images/superadmin/report-vendor.jpg" width="1917" height="905" loading="lazy"
+                   alt="Vendor Report for a single vendor, showing total trips, money spent, average fare, trips over time and an instant-vs-scheduled split.">
+              <figcaption>Vendor Report: spend, trip volume and booking-type split for one vendor.</figcaption>
             </figure>
             <figure class="shot-image full">
-              <img src="/images/vendor/company-report.jpg" width="1914" height="896" loading="lazy"
-                   alt="Company Report for all companies, showing total trips, total fare and average fare, with trips over time and an instant-vs-scheduled split.">
-              <figcaption>Company Report: company-level trips, fare and trip-type split.</figcaption>
-            </figure>
-        </section>
-
-        <section class="section" id="cancellations">
-          <div class="section-head"><div class="num">12</div><div><div class="eyebrow">Core areas</div><h2>Cancellations</h2><div class="rule"></div></div></div>
-          <div class="feature-text">
-              <h3>See cancellation reviews</h3>
-              <p>The Cancellations screen shows Pending Requests and Resolved Requests. Pending items are still under review by the admin team.</p>
-              <ul class="tap-list">
-                <li>Tap <strong>Pending Requests</strong> to see open cancellation reviews.</li>
-                <li>Tap <strong>Resolved Requests</strong> to see final decisions.</li>
-                <li>Use fault filters such as Driver, Supervisor, Both, or None to narrow the list.</li>
-              </ul>
-            </div>
-            <figure class="shot-image full">
-              <img src="/images/vendor/cancelation.jpg" width="1915" height="914" loading="lazy"
-                   alt="Cancellations page with pending and resolved request tabs, a pending count, and a filter by faulty party.">
-              <figcaption>Cancellation requests, filterable by which party was at fault.</figcaption>
+              <img src="/images/superadmin/report-driver.jpg" width="1915" height="910" loading="lazy"
+                   alt="Driver Report for a single driver, showing completed trips, total fare, average fare, daily trip volume and booking type split.">
+              <figcaption>Driver Report: trips and earnings for one driver.</figcaption>
             </figure>
         </section>
 
         <section class="section" id="tickets">
-          <div class="section-head"><div class="num">13</div><div><div class="eyebrow">Core areas</div><h2>Tickets</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">16</div><div><div class="eyebrow">Core areas</div><h2>Tickets</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Handle driver report tickets</h3>
-              <p>Tickets are support items raised around completed trips or driver reports. They are grouped into Pending Tickets and Resolved Tickets.</p>
+              <h3>Review support tickets</h3>
+              <p>Tickets collect trip and driver support issues. They are grouped as Pending Tickets and Resolved Tickets.</p>
               <ol class="steps">
                 <li>Open <strong>Tickets</strong>.</li>
-                <li>Choose <strong>Pending Tickets</strong> to see what still needs attention.</li>
-                <li>Tap a ticket to read the trip, driver, notes, and activity history.</li>
-                <li>Check <strong>Resolved Tickets</strong> when you need the past decision.</li>
+                <li>Choose Pending or Resolved.</li>
+                <li>Open a ticket to read driver, trip, note, and activity details.</li>
+                <li>Resolve or reopen only when the issue state is clear.</li>
               </ol>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/tickets.jpg" width="1915" height="913" loading="lazy"
-                   alt="My Tickets page with pending and resolved ticket tabs and an open ticket count.">
-              <figcaption>My Tickets: driver-report tickets raised by your team or supervisors.</figcaption>
+              <img src="/images/superadmin/tickets.jpg" width="1915" height="907" loading="lazy"
+                   alt="Tickets page with pending and resolved tabs, an open ticket count, and a list of driver-report tickets.">
+              <figcaption>Tickets raised by vendors or the superadmin mobile app.</figcaption>
             </figure>
         </section>
 
-        <section class="section" id="account">
-          <div class="section-head"><div class="num">14</div><div><div class="eyebrow">Core areas</div><h2>Account</h2><div class="rule"></div></div></div>
+        <section class="section" id="cancellations">
+          <div class="section-head"><div class="num">17</div><div><div class="eyebrow">Core areas</div><h2>Cancellations</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Watch wallet, ledger, and invoices</h3>
-              <p>The Account area shows current balance, total credited, total debited, ledger filters, spending summaries, and invoicing where available.</p>
+              <h3>Decide cancellation responsibility</h3>
+              <p>Cancellations show Pending Requests and Resolved Requests. Admin users can review details and record who was at fault: Supervisor, Driver, Both, or None.</p>
               <ul class="tap-list">
-                <li>Tap <strong>Credit</strong> or <strong>Debit</strong> to filter ledger entries.</li>
-                <li>Tap <strong>Invoicing</strong> to view billed, collected, outstanding, pending, overdue, paid, or voided invoices.</li>
-                <li>Open an invoice row to see more details.</li>
+                <li>Open a pending request from the list.</li>
+                <li>Read the trip, cancellation time, and notes.</li>
+                <li>Select the fault party and add reviewer notes when resolving.</li>
               </ul>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/acount.jpg" width="1913" height="908" loading="lazy"
-                   alt="Account wallet statement showing current balance, total credited and debited, and a table of recharges and settled trip debits.">
-              <figcaption>The Account wallet statement: recharges and settled trip debits.</figcaption>
+              <img src="/images/superadmin/cancelation.jpg" width="1913" height="914" loading="lazy"
+                   alt="Cancellations page with pending and resolved request tabs, a pending count, and a list of cancellation requests with reasons.">
+              <figcaption>Cancellation requests awaiting review.</figcaption>
             </figure>
+        </section>
+
+        <section class="section" id="sos">
+          <div class="section-head"><div class="num">18</div><div><div class="eyebrow">Core areas</div><h2>SOS</h2><div class="rule"></div></div></div>
+          <div class="feature-text">
+              <h3>Handle urgent safety alerts</h3>
+              <p>SOS is for urgent driver or trip alerts. Treat this screen as high priority and check each item quickly.</p>
+              <ol class="steps">
+                <li>Open <strong>SOS</strong> when there is an alert.</li>
+                <li>Read driver, trip, time, location, and contact details.</li>
+                <li>Contact the right person using the provided details.</li>
+                <li>Mark or update the item only after the response is recorded.</li>
+              </ol>
+            </div>
+            <figure class="shot-image full">
+              <img src="/images/superadmin/sos.jpg" width="1915" height="907" loading="lazy"
+                   alt="SOS page with new and acknowledged tabs, an active alert count, and a list of emergency alerts triggered by drivers.">
+              <figcaption>SOS: emergency alerts triggered by drivers, new and acknowledged.</figcaption>
+            </figure>
+          <div class="callout warning"><div class="symbol">!</div><div><strong>Urgent workflow</strong> SOS items should be handled before routine reports or finance review.</div></div>
         </section>
 
         <section class="section" id="team">
-          <div class="section-head"><div class="num">15</div><div><div class="eyebrow">Core areas</div><h2>User Management</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">19</div><div><div class="eyebrow">Core areas</div><h2>User Management</h2><div class="rule"></div></div></div>
           <div class="feature-text">
-              <h3>Add team members carefully</h3>
-              <p>User Management is for vendor admins. It lets you add team members, set role labels, choose permissions, and activate or deactivate access.</p>
-              <ol class="steps">
-                <li>Open <strong>User Management</strong>.</li>
-                <li>Tap the add member button.</li>
-                <li>Enter basic info, then choose module permissions.</li>
-                <li>Save only when the role matches the person&apos;s real work.</li>
-              </ol>
-            </div>
-            <figure class="shot-image full">
-              <img src="/images/vendor/user-management.jpg" width="1906" height="901" loading="lazy"
-                   alt="User Management with total, active and inactive member cards above the team member table and an Add Member action.">
-              <figcaption>User Management: vendor dashboard team members and permissions.</figcaption>
-            </figure>
-          <div class="callout warning"><div class="symbol">!</div><div><strong>Permission reminder</strong> Give the smallest access that lets a person do their job. Account and settings access should stay limited.</div></div>
-        </section>
-
-        <section class="section" id="profile">
-          <div class="section-head"><div class="num">16</div><div><div class="eyebrow">Core areas</div><h2>Settings and Profile</h2><div class="rule"></div></div></div>
-          <div class="feature-text">
-              <h3>Keep company details current</h3>
-              <p>Settings and Profile show vendor details, contact information, document status, PAN card, GST certificate, and password options.</p>
+              <h3>Manage admin team access</h3>
+              <p>User Management is for full super admins. It lets you add admin team members, set role labels, assign module permissions, and deactivate users.</p>
               <ul class="tap-list">
-                <li>Tap <strong>Profile Details</strong> to review company information and documents.</li>
-                <li>Tap <strong>Password</strong> to change your password.</li>
-                <li>Check document badges: Approved, Pending, or Not Submitted.</li>
+                <li>Tap <strong>User Management</strong> from the sidebar.</li>
+                <li>Add or edit a team member.</li>
+                <li>Choose only the modules that person should use.</li>
+                <li>Save and confirm the account appears with the correct status.</li>
               </ul>
             </div>
             <figure class="shot-image full">
-              <img src="/images/vendor/settings.jpg" width="1906" height="907" loading="lazy"
-                   alt="Settings on the Profile Details tab, showing vendor details, address, PAN and GST fields, additional POCs, and document upload rows.">
-              <figcaption>Settings &rarr; Profile Details: vendor details and document uploads.</figcaption>
+              <img src="/images/superadmin/user-management.jpg" width="1906" height="909" loading="lazy"
+                   alt="User Management with total, active and inactive member cards above a table of members, roles, permissions and status toggles.">
+              <figcaption>User Management: admin access and per-module permissions.</figcaption>
             </figure>
         </section>
 
+        <section class="section" id="settings">
+          <div class="section-head"><div class="num">20</div><div><div class="eyebrow">Core areas</div><h2>Settings</h2><div class="rule"></div></div></div>
+          <div class="feature-text">
+              <h3>Configure platform rules</h3>
+              <p>Settings and Platform Settings are for rules that affect trips, billing, cancellation policies, charges, commissions, fare rules, and related platform behavior.</p>
+              <ul class="tap-list">
+                <li>Open <strong>Settings</strong> or <strong>Platform Settings</strong>.</li>
+                <li>Review the current rule before changing it.</li>
+                <li>Save changes only after confirming the business impact.</li>
+              </ul>
+            </div>
+            <figure class="shot-image full">
+              <img src="/images/superadmin/settings.jpg" width="1912" height="915" loading="lazy"
+                   alt="Settings page on the Fare Setting tab, showing fare rules by distance slab, vehicle, escort and AC type.">
+              <figcaption>Settings: fare rules, taxes, commissions and cancellation policies.</figcaption>
+            </figure>
+          <div class="callout warning"><div class="symbol">!</div><div><strong>Change carefully</strong> Platform settings can affect many vendors, drivers, and future trips. Confirm before saving.</div></div>
+        </section>
+
         <section class="section" id="reference">
-          <div class="section-head"><div class="num">17</div><div><div class="eyebrow">Reference</div><h2>Status table</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">21</div><div><div class="eyebrow">Reference</div><h2>Status table</h2><div class="rule"></div></div></div>
           <table>
             <thead><tr><th>Status</th><th>Where you may see it</th><th>Meaning</th><th>What to do</th></tr></thead>
             <tbody>
-              <tr><td><span class="pill amber">Pending</span></td><td>Scheduled trips, tickets, cancellations, invoices, documents.</td><td>Waiting for action, review, payment, or assignment.</td><td>Open the item and read the next required step.</td></tr>
-              <tr><td><span class="pill navy">Ongoing</span></td><td>Active Trips.</td><td>The trip is currently in progress.</td><td>Monitor route, driver, and supervisor details.</td></tr>
-              <tr><td><span class="pill green">Completed</span></td><td>Completed Trips and reports.</td><td>The trip has finished and can count toward reports.</td><td>Review fare, timing, and any ticket option if needed.</td></tr>
-              <tr><td><span class="pill red">Cancelled</span></td><td>Trips and cancellation review.</td><td>The trip did not continue.</td><td>Check the cancellation request and final fault decision.</td></tr>
-              <tr><td><span class="pill green">Approved</span></td><td>Documents and profile.</td><td>The submitted item has been accepted.</td><td>No action needed.</td></tr>
-              <tr><td><span class="pill grey">Inactive</span></td><td>Vendor, supervisor, or team member.</td><td>The account cannot act normally.</td><td>Ask an admin or SK Voyages support to review it.</td></tr>
+              <tr><td><span class="pill amber">Pending</span></td><td>Enquiries, onboarding, tickets, cancellations, invoices.</td><td>Waiting for review, assignment, payment, or action.</td><td>Open the item and complete the next review step.</td></tr>
+              <tr><td><span class="pill navy">Published</span></td><td>Website booking enquiry.</td><td>The trip is available for driver assignment.</td><td>Assign a driver or monitor driver interest.</td></tr>
+              <tr><td><span class="pill navy">Driver Assigned</span></td><td>Booking enquiry and trips.</td><td>A driver has been linked to the trip.</td><td>Watch for the trip to become active or completed.</td></tr>
+              <tr><td><span class="pill green">Completed</span></td><td>Trips, reports, finance.</td><td>The journey is finished and counts in completed totals.</td><td>Review settlement, invoice, or report details if needed.</td></tr>
+              <tr><td><span class="pill green">Available</span></td><td>Drivers and Live Map.</td><td>The driver is active and can take work.</td><td>Use for assignment decisions.</td></tr>
+              <tr><td><span class="pill navy">On Trip</span></td><td>Drivers and Live Map.</td><td>The driver is currently serving a trip.</td><td>Monitor but avoid assigning new work unless the workflow allows it.</td></tr>
+              <tr><td><span class="pill red">Rejected</span></td><td>Vendor or driver review.</td><td>The application or document was not accepted.</td><td>Read reviewer notes and ask for corrected details if needed.</td></tr>
+              <tr><td><span class="pill grey">Offline</span></td><td>Drivers.</td><td>The driver is unavailable or not verified/active.</td><td>Do not assign unless status changes.</td></tr>
             </tbody>
           </table>
         </section>
 
         <section class="section" id="messages">
-          <div class="section-head"><div class="num">18</div><div><div class="eyebrow">Reference</div><h2>App messages you might see</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">22</div><div><div class="eyebrow">Reference</div><h2>App messages you might see</h2><div class="rule"></div></div></div>
           <table>
             <thead><tr><th>Message</th><th>Meaning</th><th>Next step</th></tr></thead>
             <tbody>
-              <tr><td><span class="msg good">Money added to your wallet</span></td><td>Your recharge was successful.</td><td>Return to the Dashboard or Account screen and confirm the balance.</td></tr>
-              <tr><td><span class="msg error">Enter an amount between Rs 100 and Rs 1,00,000</span></td><td>The recharge amount is outside the allowed range.</td><td>Enter a valid amount and try again.</td></tr>
-              <tr><td><span class="msg error">Could not initiate payment</span></td><td>The payment window did not start or verification failed.</td><td>Try again after a moment. If money was deducted, contact support with the order details.</td></tr>
-              <tr><td><span class="msg error">Dashboard load issue</span></td><td>The dashboard could not load fresh data.</td><td>Tap Refresh or check your internet connection.</td></tr>
-              <tr><td><span class="msg error">Vendor inactive</span></td><td>Your vendor account is blocked from some actions.</td><td>Contact SK Voyages support or the account owner.</td></tr>
+              <tr><td><span class="msg good">Updated successfully</span></td><td>Your change was saved.</td><td>Check the row or detail page to confirm it looks right.</td></tr>
+              <tr><td><span class="msg error">Dashboard load issue</span></td><td>The dashboard could not load fresh data.</td><td>Tap Refresh or reload the page.</td></tr>
+              <tr><td><span class="msg error">Booking not found</span></td><td>The selected booking could not be opened.</td><td>Go back to the list and search again.</td></tr>
+              <tr><td><span class="msg error">You already have a pending request</span></td><td>A duplicate driver request or interest already exists.</td><td>Wait for the current request to finish or cancel it if appropriate.</td></tr>
+              <tr><td><span class="msg error">Failed to load dashboard data</span></td><td>The app could not reach one or more admin services.</td><td>Refresh. If it continues, share the time and screen with the technical team.</td></tr>
             </tbody>
           </table>
         </section>
 
         <section class="section faq" id="faq">
-          <div class="section-head"><div class="num">19</div><div><div class="eyebrow">Reference</div><h2>FAQ</h2><div class="rule"></div></div></div>
-          <h3>Why do I not see all menu items?</h3><p>Your account may be a team member account with limited permissions. Ask your vendor admin if you need access.</p>
-          <h3>Why is money shown as a hold amount?</h3><p>Live Hold Amount is money reserved for in-progress trips. It changes as trips complete or cancel.</p>
-          <h3>Which trips appear in reports?</h3><p>Reports focus on completed trips for the selected period, so pending or cancelled trips may not be included in totals.</p>
-          <h3>Can I change invoice status?</h3><p>Where allowed, pending or overdue invoices can be updated. Paid or voided invoices are usually not changed from the list.</p>
+          <div class="section-head"><div class="num">23</div><div><div class="eyebrow">Reference</div><h2>FAQ</h2><div class="rule"></div></div></div>
+          <h3>Why do my dashboard numbers change after Refresh?</h3><p>The Dashboard uses live platform data. Refresh pulls the newest wallet, trip, ticket, and leaderboard information.</p>
+          <h3>What is the difference between Dashboard and Finance Dashboard?</h3><p>Dashboard gives a broad operating snapshot. Finance Dashboard focuses more deeply on booking and money details.</p>
+          <h3>When should I use Live Map?</h3><p>Use Live Map when you need real-time driver status or location context for active operations.</p>
+          <h3>Why can&apos;t I see Settings?</h3><p>Settings are admin-only. If you are a superadmin team member, a full super admin must grant access.</p>
+          <h3>Which trips count in reports?</h3><p>Reports usually focus on completed trips in the selected period, so open or cancelled trips may not be counted the same way.</p>
         </section>
 
         <section class="section" id="troubleshooting">
-          <div class="section-head"><div class="num">20</div><div><div class="eyebrow">Reference</div><h2>Troubleshooting</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">24</div><div><div class="eyebrow">Reference</div><h2>Troubleshooting</h2><div class="rule"></div></div></div>
           <table>
             <thead><tr><th>Problem</th><th>Try this first</th><th>If it still happens</th></tr></thead>
             <tbody>
-              <tr><td>Dashboard numbers look old.</td><td>Tap Refresh or reload the page.</td><td>Check your internet connection and try again.</td></tr>
-              <tr><td>Recharge did not finish.</td><td>Wait a minute, then check Account balance.</td><td>Contact support with payment amount and time.</td></tr>
-              <tr><td>A trip is missing.</td><td>Check the correct tab: Active, Completed, or Scheduled.</td><td>Clear filters and search again.</td></tr>
-              <tr><td>Cannot open a screen.</td><td>Confirm your account has permission for that module.</td><td>Ask the vendor admin to update your access.</td></tr>
-              <tr><td>Document shows Pending.</td><td>Wait for SK Voyages review.</td><td>Upload the correct document again if support asks.</td></tr>
+              <tr><td>Dashboard is blank or stale.</td><td>Tap Refresh, then reload the page.</td><td>Check whether the backend service is available.</td></tr>
+              <tr><td>A vendor or driver is missing.</td><td>Clear filters and check the correct tab.</td><td>Search by phone, name, or ID if available.</td></tr>
+              <tr><td>Cannot approve an item.</td><td>Check required documents and missing fields.</td><td>Confirm your account has permission for that module.</td></tr>
+              <tr><td>Live Map status looks wrong.</td><td>Refresh and check the driver detail page.</td><td>Ask the operations or technical team to confirm location feed status.</td></tr>
+              <tr><td>Invoice status cannot be changed.</td><td>Check whether it is already Paid or Voided.</td><td>Use finance review workflow before requesting a backend correction.</td></tr>
+              <tr><td>An SOS item is unclear.</td><td>Open the full alert and check driver, trip, time, and location.</td><td>Escalate immediately using the operational contact path.</td></tr>
             </tbody>
           </table>
         </section>
 
         <section class="section" id="glossary">
-          <div class="section-head"><div class="num">21</div><div><div class="eyebrow">Reference</div><h2>Glossary</h2><div class="rule"></div></div></div>
+          <div class="section-head"><div class="num">25</div><div><div class="eyebrow">Reference</div><h2>Glossary</h2><div class="rule"></div></div></div>
           <div class="grid-3">
-            <div class="card"><h3>Hold Amount</h3><p>Money reserved for live or pending trips until the trip is settled.</p></div>
-            <div class="card"><h3>Supervisor</h3><p>A company user who creates or manages trips under your vendor.</p></div>
-            <div class="card"><h3>Ledger</h3><p>A list of wallet credits and debits.</p></div>
-            <div class="card"><h3>Completed Trip</h3><p>A trip that has finished and is counted in reports.</p></div>
-            <div class="card"><h3>Ticket</h3><p>A support item connected to a driver report or trip issue.</p></div>
-            <div class="card"><h3>Credit Usage</h3><p>Postpaid spending against an approved credit limit.</p></div>
+            <div class="card"><h3>Vendor Spend</h3><p>Money charged to vendors for completed trips and related charges.</p></div>
+            <div class="card"><h3>Driver Earned</h3><p>Driver earnings from completed trips and eligible cancellation payments.</p></div>
+            <div class="card"><h3>Hold Amount</h3><p>Money currently reserved for in-progress or pending settlement trips.</p></div>
+            <div class="card"><h3>Published</h3><p>A booking that is ready for driver assignment.</p></div>
+            <div class="card"><h3>Driver Assigned</h3><p>A booking with a driver already linked.</p></div>
+            <div class="card"><h3>Low Balance Vendor</h3><p>A vendor whose wallet balance is below the dashboard threshold.</p></div>
+            <div class="card"><h3>Special Enquiry</h3><p>A customer request that needs custom handling.</p></div>
+            <div class="card"><h3>SOS</h3><p>An urgent safety or emergency alert requiring fast response.</p></div>
+            <div class="card"><h3>Platform Settings</h3><p>Rules that affect fares, charges, commissions, cancellation policies, and other platform behavior.</p></div>
           </div>
-          <p><em>Disclaimer: This manual is a user guide for SK Voyages Vendor Dashboard version 1.0. Screens, permissions, labels, and workflows may change as the product is updated.</em></p>
+          <p><em>Disclaimer: This manual is a user guide for SK Voyages Super Admin Dashboard version 1.0. Screens, permissions, labels, and workflows may change as the product is updated.</em></p>
         </section>
       </div>
 
-      <footer><div class="footer-inner">SK Voyages Vendor Dashboard &middot; User Manual &middot; Version 1.0</div></footer>
+      <footer><div class="footer-inner">SK Voyages Super Admin Dashboard &middot; User Manual &middot; Version 1.0</div></footer>
     </main>
   </div>
 
@@ -459,72 +546,11 @@
   })();
 </script>
 
-<button class="download-pdf" id="downloadPdf" type="button" aria-label="Download this manual as a PDF">
+<a class="download-pdf" href="/pdf/sk-voyages-superadmin-dashboard-user-manual.pdf" download aria-label="Download this manual as a PDF">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
     <path d="M12 3v12"/><path d="m7 12 5 5 5-5"/><path d="M4 21h16"/>
   </svg>
-  <span data-label>Download PDF</span>
-</button>
-<script>
-  (function () {
-    var button = document.getElementById('downloadPdf');
-    if (!button) return;
-
-    var label = button.querySelector('[data-label]');
-    var idle = label.textContent;
-
-    function reset(delay) {
-      setTimeout(function () {
-        label.textContent = idle;
-        button.classList.remove('is-error');
-        button.disabled = false;
-      }, delay);
-    }
-
-    button.addEventListener('click', function () {
-      if (button.disabled) return;
-
-      // Works whether the manual is served at /files/<name> or at /<name>.
-      var file = location.pathname.replace(/^\/files\//, '').replace(/^\//, '');
-      if (!file) return;
-
-      button.disabled = true;
-      button.classList.remove('is-error');
-      label.textContent = 'Preparing\u2026';
-
-      fetch('/api/pdf/' + file)
-        .then(function (response) {
-          if (!response.ok) {
-            return response.text().then(function (text) {
-              throw new Error(text || 'Export failed (' + response.status + ')');
-            });
-          }
-          return response.blob();
-        })
-        .then(function (blob) {
-          var url = URL.createObjectURL(blob);
-          var link = document.createElement('a');
-          link.href = url;
-          link.download = (document.title || 'manual')
-            .replace(/[^a-z0-9]+/gi, '-')
-            .replace(/^-+|-+$/g, '')
-            .toLowerCase() + '.pdf';
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
-          setTimeout(function () { URL.revokeObjectURL(url); }, 10000);
-
-          label.textContent = 'Downloaded';
-          reset(1800);
-        })
-        .catch(function (error) {
-          console.error(error);
-          button.classList.add('is-error');
-          label.textContent = 'Failed \u2014 retry';
-          reset(3200);
-        });
-    });
-  })();
-</script>
+  <span>Download PDF</span>
+</a>
 </body>
 </html>
