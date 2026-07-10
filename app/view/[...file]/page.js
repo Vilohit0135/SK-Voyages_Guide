@@ -10,7 +10,11 @@ export function generateStaticParams() {
   return getHtmlPages().map((page) => ({ file: [page.path] }));
 }
 
-export const dynamicParams = false;
+// Do NOT set `dynamicParams = false` here. The manual filenames contain spaces,
+// so the URL segment arrives percent-encoded. In production that is fine -- the
+// request matches a prerendered file -- but in `next dev` there is no file, and
+// Next compares the raw encoded segment against these decoded names and 404s
+// every manual. Unknown paths still 404, via notFound() below.
 
 function decodeSegments(segments) {
   return segments

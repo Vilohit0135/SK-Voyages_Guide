@@ -239,6 +239,30 @@ main, .main { width: 100%; max-width: 100%; padding: 34px 0 0; overflow-x: hidde
   font-size: 1rem;
 }
 
+/* Attribution badge on the cover of the Travellink-branded manuals.
+   `align-self` matters: the covers that wrap their content in a flex column
+   would otherwise stretch this to the full width. */
+.powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  align-self: flex-start;
+  margin: 18px 0 0;
+  padding: 7px 13px;
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 999px;
+  background: rgba(255,255,255,.05);
+  color: rgba(255,255,255,.7);
+  font-family: "Space Mono", monospace;
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.powered-by strong { color: var(--orange); font-weight: 700; }
+
 /* Journey strip. All manuals use the canonical markup:
    <div class="journey"><div class="stage"><span class="dot"></span><strong>..</strong><span>..</span></div>…</div> */
 .journey {
@@ -954,7 +978,11 @@ footer .fv { font-family: "Space Mono", monospace; color: var(--orange); }
   }
   section.cover, section.hero { padding: 16mm; }
   .cover h1, .hero h1 { font-size: 26pt; }
+  /* The paper is ~690px wide; at full size six journey labels collide. */
   .journey { margin: 24pt 0 14pt; }
+  .stage { padding-top: 22px; padding-right: 6pt; font-size: 8pt; }
+  .stage strong { font-size: 8.5pt; line-height: 1.25; }
+  .powered-by { font-size: 7.5pt; padding: 5pt 9pt; }
 
   /* The page margin already supplies the side gutter. */
   section, .section {
